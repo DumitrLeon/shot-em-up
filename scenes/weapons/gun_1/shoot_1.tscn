@@ -1,0 +1,74 @@
+[gd_scene load_steps=9 format=3 uid="uid://chpmu4h2jgcu7"]
+
+[ext_resource type="Script" uid="uid://b3o4rrrkatw6k" path="res://scripts/weapons/projectile.gd" id="1_ynjsp"]
+[ext_resource type="Texture2D" uid="uid://n0nresr0gp55" path="res://assets/guns/gun_1/shoot_1.png" id="2_wkyx6"]
+[ext_resource type="Script" uid="uid://b64c7omann5hn" path="res://scripts/weapons/impact.gd" id="3_lxp0j"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_48co4"]
+atlas = ExtResource("2_wkyx6")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xy0n7"]
+atlas = ExtResource("2_wkyx6")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_j0m5p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_48co4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xy0n7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 11.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_48co4"]
+size = Vector2(6, 1)
+
+[sub_resource type="Gradient" id="Gradient_48co4"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.63013697, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.35686275, 0.5372549, 0.7176471, 1)
+
+[node name="Shoot" type="Area2D"]
+input_pickable = false
+monitoring = false
+script = ExtResource("1_ynjsp")
+metadata/_custom_type_script = "uid://b3o4rrrkatw6k"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(3, 0)
+sprite_frames = SubResource("SpriteFrames_j0m5p")
+autoplay = "default"
+frame = 1
+frame_progress = 0.85554683
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 0.5)
+shape = SubResource("RectangleShape2D_48co4")
+
+[node name="Impact" type="CPUParticles2D" parent="."]
+position = Vector2(2, 0)
+emitting = false
+amount = 10
+lifetime = 0.3
+one_shot = true
+explosiveness = 0.73
+emission_shape = 1
+emission_sphere_radius = 1.0
+gravity = Vector2(100, 50)
+initial_velocity_max = 30.93
+angular_velocity_min = 89.07
+angular_velocity_max = 720.0
+damping_max = 92.784
+scale_amount_min = 0.0
+color = Color(0.47058824, 0.627451, 0.7647059, 1)
+color_ramp = SubResource("Gradient_48co4")
+script = ExtResource("3_lxp0j")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="finished" from="Impact" to="Impact" method="_on_finished"]

@@ -1,0 +1,65 @@
+[gd_scene load_steps=7 format=3 uid="uid://dgxs5tp2mxqwy"]
+
+[ext_resource type="Script" uid="uid://dvtoe7p5f0mo6" path="res://scripts/game.gd" id="1_lnu2h"]
+[ext_resource type="PackedScene" uid="uid://cprdeixoqqkxl" path="res://scenes/player.tscn" id="1_yqjtg"]
+[ext_resource type="Texture2D" uid="uid://u5kqr1kafcfp" path="res://assets/themes/them_1/Stars.png" id="3_iywne"]
+[ext_resource type="Script" uid="uid://cbvwcsxrht36v" path="res://scripts/UI/ui_manager.gd" id="3_lnu2h"]
+[ext_resource type="Texture2D" uid="uid://dnursbn6qsud3" path="res://assets/themes/them_1/Sun.png" id="3_p57ef"]
+[ext_resource type="Texture2D" uid="uid://cgejlbdmd635r" path="res://assets/themes/them_1/Planets.png" id="3_u5sy4"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_lnu2h")
+spawn_rate = 0.5
+
+[node name="Parallax" type="Node2D" parent="."]
+position = Vector2(168, 0)
+
+[node name="Stars" type="Parallax2D" parent="Parallax"]
+repeat_size = Vector2(384, 0)
+autoscroll = Vector2(-1, 0)
+follow_viewport = false
+ignore_camera_scroll = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax/Stars"]
+modulate = Color(0.23046875, 0.23046875, 0.23046875, 1)
+texture = ExtResource("3_iywne")
+
+[node name="Planets" type="Parallax2D" parent="Parallax"]
+scroll_offset = Vector2(112, 0)
+repeat_size = Vector2(768, 0)
+autoscroll = Vector2(-2, 0)
+follow_viewport = false
+ignore_camera_scroll = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax/Planets"]
+position = Vector2(192, 0)
+texture = ExtResource("3_u5sy4")
+
+[node name="Sun" type="Parallax2D" parent="Parallax"]
+scroll_offset = Vector2(0, -48)
+repeat_size = Vector2(1000, 0)
+autoscroll = Vector2(-0.1, -0.1)
+follow_viewport = false
+ignore_camera_scroll = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax/Sun"]
+texture = ExtResource("3_p57ef")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(168, 3)
+zoom = Vector2(3, 3)
+limit_enabled = false
+
+[node name="Player" parent="." instance=ExtResource("1_yqjtg")]
+collision_mask = 7
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="UI_manager" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -23.999998
+offset_top = -103.99999
+offset_right = 360.0
+offset_bottom = 112.00001
+script = ExtResource("3_lnu2h")

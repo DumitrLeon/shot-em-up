@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="WeaponData" load_steps=4 format=3 uid="uid://b77fj47j04kas"]
+
+[ext_resource type="Texture2D" uid="uid://b3xdn31dac627" path="res://assets/guns/gun_1/gun_1.png" id="1_v1ykr"]
+[ext_resource type="PackedScene" uid="uid://chpmu4h2jgcu7" path="res://scenes/weapons/gun_1/shoot_1.tscn" id="2_v1ykr"]
+[ext_resource type="Script" uid="uid://bg27kumyc5gw5" path="res://scripts/weapons/weapon_data.gd" id="3_7kfeg"]
+
+[resource]
+script = ExtResource("3_7kfeg")
+gun_texture = ExtResource("1_v1ykr")
+projectile_scene = ExtResource("2_v1ykr")
+projectile_speed = 250.0
+metadata/_custom_type_script = "uid://bg27kumyc5gw5"

@@ -1,0 +1,214 @@
+[gd_scene load_steps=14 format=3 uid="uid://cprdeixoqqkxl"]
+
+[ext_resource type="Texture2D" uid="uid://p15v0cxj1so7" path="res://assets/ships/first/ship.png" id="1_3vyb7"]
+[ext_resource type="Script" uid="uid://dlyum2146ohrp" path="res://scripts/player.gd" id="1_qhqgy"]
+[ext_resource type="Script" uid="uid://clihqtappgs14" path="res://scripts/animation_controller.gd" id="2_g2els"]
+[ext_resource type="Texture2D" uid="uid://b3xdn31dac627" path="res://assets/guns/gun_1/gun_1.png" id="4_smehm"]
+[ext_resource type="Script" uid="uid://cykqljxo2a0qe" path="res://scripts/weapons/weapon.gd" id="4_tuyoq"]
+[ext_resource type="Script" uid="uid://duqdp2tnosmvf" path="res://scripts/weapons/projectile_modifier.gd" id="6_fjrip"]
+[ext_resource type="PackedScene" uid="uid://chpmu4h2jgcu7" path="res://scenes/weapons/gun_1/shoot_1.tscn" id="6_smehm"]
+[ext_resource type="Resource" uid="uid://b77fj47j04kas" path="res://assets/guns/gun_1/gun_1.tres" id="6_ur7pv"]
+
+[sub_resource type="Animation" id="Animation_dqkch"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_smehm"]
+resource_name = "damage"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-0.17453292519943295, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.24666667, 0), Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Parts/Weapon:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-0.17453292519943295, 0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Parts/Weapon:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(6, 1), Vector2(5, 2)]
+}
+
+[sub_resource type="Animation" id="Animation_qhqgy"]
+resource_name = "thrusters"
+length = 0.35
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:hframes")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:vframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [1, 4, 2]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.06666666, 0.13333334, 0.16666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(0.925, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Parts/Weapon:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.06666667, 0.13333334, 0.16666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(5, 2), Vector2(5, 2), Vector2(6, 2)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qlg0r"]
+_data = {
+&"RESET": SubResource("Animation_dqkch"),
+&"damage": SubResource("Animation_smehm"),
+&"thrusters": SubResource("Animation_qhqgy")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3vyb7"]
+size = Vector2(16, 5)
+
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
+script = ExtResource("1_qhqgy")
+base_speed = 120
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0.24666667, 0)
+rotation = -0.17453292
+texture = ExtResource("1_3vyb7")
+hframes = 3
+vframes = 2
+frame = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_qlg0r")
+}
+autoplay = "thrusters"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_3vyb7")
+
+[node name="AnimationController" type="Node2D" parent="."]
+script = ExtResource("2_g2els")
+
+[node name="Parts" type="Node2D" parent="."]
+
+[node name="Weapon" type="Sprite2D" parent="Parts"]
+position = Vector2(5.266667, 2)
+rotation = -0.17453292
+texture = ExtResource("4_smehm")
+script = ExtResource("4_tuyoq")
+weapon_data = ExtResource("6_ur7pv")
+metadata/_custom_type_script = "uid://cykqljxo2a0qe"
+
+[node name="Shoot" parent="Parts/Weapon" instance=ExtResource("6_smehm")]
+visible = false
+position = Vector2(3.553607, 0)
+collision_layer = 8
+collision_mask = 4
+
+[node name="Modifiers" type="Node" parent="Parts/Weapon"]
+
+[node name="DamageUp" type="Node" parent="Parts/Weapon/Modifiers"]
+script = ExtResource("6_fjrip")
+metadata/_custom_type_script = "uid://duqdp2tnosmvf"
+
+[connection signal="animation_finished" from="AnimationPlayer" to="AnimationController" method="_on_animation_player_animation_finished"]

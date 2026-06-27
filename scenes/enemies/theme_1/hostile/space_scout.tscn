@@ -1,0 +1,167 @@
+[gd_scene load_steps=18 format=3 uid="uid://cefs1nut3itfj"]
+
+[ext_resource type="Script" uid="uid://cewdnxcsw2pnt" path="res://scripts/enemies/space_scout.gd" id="1_nidi7"]
+[ext_resource type="Texture2D" uid="uid://e60nvvnbefvc" path="res://assets/enemies/enemy_1/enemy_1_thrusters.png" id="2_q1ist"]
+[ext_resource type="Texture2D" uid="uid://dd3kgeev0qrl6" path="res://assets/enemies/enemy_1/enemy_1.png" id="3_dm7wr"]
+[ext_resource type="Texture2D" uid="uid://b1uylckhdov5i" path="res://assets/enemies/enemy_1/enemy_1_shoot.png" id="4_q1ist"]
+[ext_resource type="Script" uid="uid://ch41dvmw8cyx1" path="res://scripts/enemies/enemy_projectile.gd" id="5_dm7wr"]
+
+[sub_resource type="Animation" id="Animation_nidi7"]
+resource_name = "damaged"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.34557519189487745, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_q1ist"]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_q1ist"]
+_data = {
+&"damaged": SubResource("Animation_nidi7"),
+&"idle": SubResource("Animation_q1ist")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vku56"]
+atlas = ExtResource("2_q1ist")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cse35"]
+atlas = ExtResource("2_q1ist")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b3q8h"]
+atlas = ExtResource("2_q1ist")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ypob2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vku56")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cse35")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b3q8h")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6o8j8"]
+radius = 8.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q1ist"]
+atlas = ExtResource("4_q1ist")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dm7wr"]
+atlas = ExtResource("4_q1ist")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_viwf0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q1ist")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dm7wr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q1ist"]
+radius = 1.4142135
+
+[node name="SpaceScout" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_nidi7")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_q1ist")
+}
+autoplay = "idle"
+
+[node name="Thrusters" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ypob2")
+autoplay = "default"
+frame_progress = 0.32116345
+
+[node name="Body" type="Sprite2D" parent="."]
+texture = ExtResource("3_dm7wr")
+
+[node name="Marker2D" type="Marker2D" parent="Body"]
+position = Vector2(-11, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_6o8j8")
+
+[node name="Projectile" type="Area2D" parent="."]
+visible = false
+position = Vector2(-11, 0)
+monitoring = false
+script = ExtResource("5_dm7wr")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Projectile"]
+scale = Vector2(0.4, 0.4)
+sprite_frames = SubResource("SpriteFrames_viwf0")
+frame_progress = 0.97005093
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Projectile"]
+shape = SubResource("CircleShape2D_q1ist")
+
+[connection signal="body_entered" from="Projectile" to="Projectile" method="_on_body_entered"]
