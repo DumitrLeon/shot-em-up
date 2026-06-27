@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dgxs5tp2mxqwy"]
+[gd_scene load_steps=14 format=3 uid="uid://dgxs5tp2mxqwy"]
 
 [ext_resource type="Script" uid="uid://dvtoe7p5f0mo6" path="res://scripts/game.gd" id="1_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://cprdeixoqqkxl" path="res://scenes/player.tscn" id="1_yqjtg"]
@@ -6,6 +6,17 @@
 [ext_resource type="Script" uid="uid://cbvwcsxrht36v" path="res://scripts/UI/ui_manager.gd" id="3_lnu2h"]
 [ext_resource type="Texture2D" uid="uid://dnursbn6qsud3" path="res://assets/themes/them_1/Sun.png" id="3_p57ef"]
 [ext_resource type="Texture2D" uid="uid://cgejlbdmd635r" path="res://assets/themes/them_1/Planets.png" id="3_u5sy4"]
+[ext_resource type="Texture2D" uid="uid://cxke8c7lrr7tp" path="res://assets/Mobile/MobileControls_0001.png" id="7_kvpfn"]
+[ext_resource type="Texture2D" uid="uid://yb2ejrqpfwp4" path="res://assets/Mobile/MobileControls_0002.png" id="8_dinhu"]
+[ext_resource type="Texture2D" uid="uid://btpag03vddk2h" path="res://assets/Mobile/MobileControls_0003.png" id="9_kvuet"]
+[ext_resource type="Texture2D" uid="uid://tadd5m037xyl" path="res://assets/Mobile/MobileControls_0004.png" id="10_trtic"]
+[ext_resource type="Texture2D" uid="uid://df34632tx8n8" path="res://assets/Mobile/MobileControls_0005.png" id="11_ir15t"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kvpfn"]
+radius = 5.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_trtic"]
+radius = 4.0
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_lnu2h")
@@ -63,3 +74,43 @@ offset_top = -103.99999
 offset_right = 360.0
 offset_bottom = 112.00001
 script = ExtResource("3_lnu2h")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="UI_manager"]
+scale = Vector2(3, 3)
+transform = Transform2D(3, 0, 0, 3, 0, 0)
+
+[node name="up" type="TouchScreenButton" parent="UI_manager/CanvasLayer"]
+position = Vector2(13.333334, 120)
+texture_normal = ExtResource("7_kvpfn")
+shape = SubResource("CircleShape2D_kvpfn")
+passby_press = true
+action = "up"
+
+[node name="right" type="TouchScreenButton" parent="UI_manager/CanvasLayer"]
+position = Vector2(29.333334, 136)
+texture_normal = ExtResource("8_dinhu")
+shape = SubResource("CircleShape2D_kvpfn")
+passby_press = true
+action = "right"
+
+[node name="left" type="TouchScreenButton" parent="UI_manager/CanvasLayer"]
+position = Vector2(-2.666666, 136)
+texture_normal = ExtResource("9_kvuet")
+shape = SubResource("CircleShape2D_kvpfn")
+passby_press = true
+action = "left"
+
+[node name="down" type="TouchScreenButton" parent="UI_manager/CanvasLayer"]
+position = Vector2(13.333334, 152)
+texture_normal = ExtResource("10_trtic")
+shape = SubResource("CircleShape2D_kvpfn")
+passby_press = true
+action = "down"
+
+[node name="shoot" type="TouchScreenButton" parent="UI_manager/CanvasLayer"]
+position = Vector2(277.33334, 112)
+scale = Vector2(1.64, 1.64)
+texture_normal = ExtResource("11_ir15t")
+shape = SubResource("CircleShape2D_trtic")
+passby_press = true
+action = "shoot"
