@@ -42,7 +42,7 @@ func _process(delta: float) -> void:
 		var spawn_x = 400
 		var spawn_y = randi_range(-104, 112)
 		
-		var enemy_scene = themes["theme_1"]["hostile"].pick_random()
+		var enemy_scene = preload("res://scenes/enemies/theme_1/hostile/space_scout.tscn")
 		var enemy = enemy_scene.instantiate()
 		enemy.global_position = Vector2(spawn_x, spawn_y)
 		$Enemies.add_child(enemy)
