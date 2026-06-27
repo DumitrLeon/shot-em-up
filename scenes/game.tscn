@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dgxs5tp2mxqwy"]
+[gd_scene load_steps=15 format=3 uid="uid://dgxs5tp2mxqwy"]
 
 [ext_resource type="Script" uid="uid://dvtoe7p5f0mo6" path="res://scripts/game.gd" id="1_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://cprdeixoqqkxl" path="res://scenes/player.tscn" id="1_yqjtg"]
@@ -12,11 +12,14 @@
 [ext_resource type="Texture2D" uid="uid://tadd5m037xyl" path="res://assets/Mobile/MobileControls_0004.png" id="10_trtic"]
 [ext_resource type="Texture2D" uid="uid://df34632tx8n8" path="res://assets/Mobile/MobileControls_0005.png" id="11_ir15t"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_kvpfn"]
-radius = 5.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_dinhu"]
+radius = 12.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_trtic"]
-radius = 4.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_kvpfn"]
+radius = 12.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kvuet"]
+radius = 15.0
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_lnu2h")
@@ -84,7 +87,7 @@ transform = Transform2D(3, 0, 0, 3, 0, 0)
 modulate = Color(1, 1, 1, 0.27450982)
 position = Vector2(13.333334, 120)
 texture_normal = ExtResource("7_kvpfn")
-shape = SubResource("CircleShape2D_kvpfn")
+shape = SubResource("CircleShape2D_dinhu")
 passby_press = true
 action = "up"
 
@@ -117,6 +120,24 @@ modulate = Color(1, 1, 1, 0.27450982)
 position = Vector2(277.33334, 112)
 scale = Vector2(1.64, 1.64)
 texture_normal = ExtResource("11_ir15t")
-shape = SubResource("CircleShape2D_trtic")
+shape = SubResource("CircleShape2D_kvuet")
 passby_press = true
 action = "shoot"
+
+[node name="vita" type="Label" parent="UI_manager"]
+layout_mode = 0
+offset_left = 176.5
+offset_top = 4.0
+offset_right = 197.5
+offset_bottom = 27.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "♥️5"
+horizontal_alignment = 1
+
+[node name="seconds" type="Label" parent="UI_manager"]
+layout_mode = 1
+offset_right = 10.0
+offset_bottom = 23.0
+text = "1"
+horizontal_alignment = 1

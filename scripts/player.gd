@@ -23,7 +23,8 @@ func _physics_process(delta: float) -> void:
 func damage_player(amt):
 	$AnimationPlayer.stop()
 	$AnimationPlayer.play("damage")
-	health -= amt*99999
+	health -= amt
+	$"../UI_manager/vita".text = "♥️"+str(health)
 	if health <= 0:
 		await get_tree().create_timer(1.5).timeout
 		get_tree().quit()

@@ -36,7 +36,14 @@ func _ready() -> void:
 	
 
 var timer = 0.0
+var timer_2 = 0.0
 func _process(delta: float) -> void:
+	if timer_2 >= 1:
+		timer_2 = 0.0
+		$UI_manager/seconds.text = str(int($UI_manager/seconds.text) + 1)
+	else:
+		timer_2 += delta
+	
 	if timer >= spawn_rate:
 		timer = 0.0
 		var spawn_x = 400
