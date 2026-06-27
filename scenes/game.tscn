@@ -45,6 +45,7 @@ ignore_camera_scroll = true
 [node name="Sprite2D" type="Sprite2D" parent="Parallax/Planets"]
 position = Vector2(192, 0)
 texture = ExtResource("3_u5sy4")
+offset = Vector2(-200, 0)
 
 [node name="Sun" type="Parallax2D" parent="Parallax"]
 scroll_offset = Vector2(0, -48)
@@ -80,6 +81,7 @@ scale = Vector2(3, 3)
 transform = Transform2D(3, 0, 0, 3, 0, 0)
 
 [node name="up" type="TouchScreenButton" parent="UI_manager/CanvasLayer"]
+modulate = Color(1, 1, 1, 0.27450982)
 position = Vector2(13.333334, 120)
 texture_normal = ExtResource("7_kvpfn")
 shape = SubResource("CircleShape2D_kvpfn")
@@ -87,6 +89,7 @@ passby_press = true
 action = "up"
 
 [node name="right" type="TouchScreenButton" parent="UI_manager/CanvasLayer"]
+modulate = Color(1, 1, 1, 0.27450982)
 position = Vector2(29.333334, 136)
 texture_normal = ExtResource("8_dinhu")
 shape = SubResource("CircleShape2D_kvpfn")
@@ -94,6 +97,7 @@ passby_press = true
 action = "right"
 
 [node name="left" type="TouchScreenButton" parent="UI_manager/CanvasLayer"]
+modulate = Color(1, 1, 1, 0.27450982)
 position = Vector2(-2.666666, 136)
 texture_normal = ExtResource("9_kvuet")
 shape = SubResource("CircleShape2D_kvpfn")
@@ -101,6 +105,7 @@ passby_press = true
 action = "left"
 
 [node name="down" type="TouchScreenButton" parent="UI_manager/CanvasLayer"]
+modulate = Color(1, 1, 1, 0.27450982)
 position = Vector2(13.333334, 152)
 texture_normal = ExtResource("10_trtic")
 shape = SubResource("CircleShape2D_kvpfn")
@@ -108,6 +113,7 @@ passby_press = true
 action = "down"
 
 [node name="shoot" type="TouchScreenButton" parent="UI_manager/CanvasLayer"]
+modulate = Color(1, 1, 1, 0.27450982)
 position = Vector2(277.33334, 112)
 scale = Vector2(1.64, 1.64)
 texture_normal = ExtResource("11_ir15t")
